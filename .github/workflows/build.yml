@@ -55,4 +55,9 @@ jobs: #liste des jobs
         - name: Build and analyze
           env:
               SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+              POSTGRES_HOST: postgres
+              POSTGRES_PORT: 5432
+              POSTGRES_DB: postgres
+              POSTGRES_USER: postgres
+              POSTGRES_PASSWORD: postgres
           run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Kvnsm_redString -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=kvnsm
