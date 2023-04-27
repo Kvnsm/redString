@@ -32,6 +32,7 @@ jobs: #liste des jobs
   sonar:
     name: Sonar analysis
     runs-on: ubuntu-latest #notez que l'analyse est lancée dans un container ubuntu fourni par github
+    needs: build
     steps:
         - uses: actions/checkout@v2
           with:
