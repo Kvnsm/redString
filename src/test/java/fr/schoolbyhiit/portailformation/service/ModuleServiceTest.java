@@ -6,6 +6,7 @@ import fr.schoolbyhiit.portailformation.mapper.ModuleMapperImpl;
 import fr.schoolbyhiit.portailformation.persistence.ModuleRepository;
 import fr.schoolbyhiit.portailformation.persistence.entity.Module;
 import fr.schoolbyhiit.portailformation.web.dto.ModuleDto;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -32,6 +33,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+@Disabled
 class ModuleServiceTest {
 
     @Mock

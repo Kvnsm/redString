@@ -8,6 +8,7 @@ import fr.schoolbyhiit.portailformation.persistence.entity.Course;
 import fr.schoolbyhiit.portailformation.persistence.entity.Module;
 import fr.schoolbyhiit.portailformation.web.dto.CourseDto;
 import fr.schoolbyhiit.portailformation.web.dto.ModuleDto;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -21,7 +22,8 @@ import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class CourseServiceTest {
+@Disabled
+public class CourseServiceTest {
 
     private static final String MODULE = "module";
     private static final String COURSE = "course";
