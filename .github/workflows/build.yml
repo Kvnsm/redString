@@ -48,6 +48,15 @@ jobs:
         POSTGRES_DB: postgres
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
+    - name: Run SonarQube Analysis
+      uses: sonarsource/sonarcloud-github-action@v1
+      with:
+        project-key: Kvnsm_redString
+        organization: kvnsm
+        token: ${{ secrets.SONAR_TOKEN }}
+        flags: '--define sonar.analysis.mode=preview'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Generate code coverage report
       run: mvn clean verify -B -DskipTests=false -Dspring.profiles.active=test-postgres sonar:sonar -Dsonar.projectKey=Kvnsm_redString -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=kvnsm
       env:
