@@ -47,6 +47,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_PROJECT_KEY: Kvnsm_redString
+        SONAR_ORGANIZATION: kvnsm
         POSTGRES_HOST: postgres
         POSTGRES_PORT: 5432
         POSTGRES_DB: postgres
