@@ -1,5 +1,3 @@
-# This workflow will build a Java project with Maven and analyze it with SonarCloud
-
 name: Build and Analyze with SonarCloud
 
 on:
@@ -48,13 +46,11 @@ jobs:
         POSTGRES_DB: postgres
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
-    - name: Run Sonar Analysis
-      uses: actions/setup-java@v1
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
       with:
-        project-key: Kvnsm_redString
-        organization: kvnsm
+        organization: "kvnsm"
         token: ${{ secrets.SONAR_TOKEN }}
-        flags: '--define sonar.analysis.mode=preview'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Generate code coverage report
