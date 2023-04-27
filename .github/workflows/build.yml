@@ -61,4 +61,4 @@ jobs: #liste des jobs
               POSTGRES_DB: postgres
               POSTGRES_USER: postgres
               POSTGRES_PASSWORD: postgres
-          run: mvn -B package org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Kvnsm_redString -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=kvnsm
+          run: mvn package org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Kvnsm_redString -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=kvnsm
