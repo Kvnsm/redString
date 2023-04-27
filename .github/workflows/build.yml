@@ -38,13 +38,6 @@ jobs:
         path: ~/.m2/repository
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-maven-
-
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: https://sonarcloud.io
-
   quality-gate:
     needs: build
     name: Quality gate
@@ -58,11 +51,9 @@ jobs:
         uses: sonarsource/sonarqube-quality-gate-action@master
           # Force to fail step after specific time
         timeout-minutes: 2
-        with:
-            scanMetadataReportFile: target/sonar/report-task.txt
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
           SONAR_PROJECT_KEY: Kvnsm_redString
           SONAR_ORGANIZATION: kvnsm
           POSTGRES_HOST: postgres
