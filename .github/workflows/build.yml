@@ -39,9 +39,14 @@ jobs:
         key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-maven-
 
+    - name: SonarQube Scan
+      uses: sonarsource/sonarqube-scan-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: https://sonarcloud.io
 
-quality-gate:
-    needs: sonar
+  quality-gate:
+    needs: build
     name: Quality gate
     runs-on: ubuntu-latest
     steps:
@@ -49,11 +54,6 @@ quality-gate:
         with:
             # Disabling shallow clone is recommended for improving relevancy of reporting
             fetch-depth: 0
-      - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
-        env:
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-            SONAR_HOST_URL: https://sonarcloud.io
       - name: SonarQube Quality Gate check
         uses: sonarsource/sonarqube-quality-gate-action@master
           # Force to fail step after specific time
